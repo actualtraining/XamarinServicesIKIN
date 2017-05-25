@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinServicesIKIN.TambahTodoItem" Title="Tambah TodoItem">
     <StackLayout>
+        <Label Text="ID :" FontSize="Medium" />
+        <Entry Text="{Binding ID}" IsEnabled="False" />
         <Label Text="Name :" FontSize="Medium" />
         <Entry Text="{Binding Name}" />
         <Label Text="Notes :" FontSize="Medium" />
@@ -10,7 +12,7 @@
         <Label Text="Done :" />
         <Switch IsToggled="{Binding Done}" />
         <StackLayout>
-            <Button x:Name="btnTambah" Text="Tambah" />
+            <Button x:Name="btnTambah" Text="Tambah" Clicked="btnTambah_Clicked" />
         </StackLayout>
     </StackLayout>
 </ContentPage>

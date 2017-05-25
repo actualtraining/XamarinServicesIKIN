@@ -25,5 +25,12 @@ namespace XamarinServicesIKIN
         {
             lstTodo.ItemsSource = await todoServices.GetAllTodoItem();
         }
+
+        private async void btnTambah_Clicked(object sender, EventArgs e)
+        {
+            TambahTodoItem tambahTodo = new TambahTodoItem();
+            tambahTodo.BindingContext = new TodoItem() { ID = Guid.NewGuid().ToString().Substring(0, 8) };
+            await Navigation.PushAsync(tambahTodo);
+        }
     }
 }
