@@ -48,5 +48,19 @@ namespace XamarinServicesIKIN.Services
                     + response.StatusCode);
             }
         }
+
+        public async Task EditTodoItem(TodoItem todoItem)
+        {
+            var strUri = new Uri(Path.Combine(Koneksi.RestUrl, "api/TodoItem/"+todoItem.ID));
+            var newItem = JsonConvert.SerializeObject(todoItem);
+            var content = new StringContent(newItem, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = null;
+            response = await _client.PutAsync(strUri, content);
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception("Error : Data gagal diupdate, status:"
+                    + response.StatusCode);
+            }
+        }
     }
 }

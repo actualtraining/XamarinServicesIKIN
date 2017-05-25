@@ -15,6 +15,10 @@
                             <Label Text="{Binding ID}" FontAttributes="Bold" />
                             <Label Text="{Binding Notes}"/>
                             <Switch IsToggled="{Binding Done}"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Button CommandParameter="{Binding ID}" Clicked="ButtonEventClicked" Text="Edit" />
+                                <Button CommandParameter="{Binding ID}" Clicked="ButtonEventClicked" Text="Delete" />
+                            </StackLayout>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

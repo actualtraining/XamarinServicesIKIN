@@ -15,6 +15,7 @@ namespace XamarinServicesIKIN
     public partial class TampilTodoItem : ContentPage
     {
         private TodoItemServices todoServices;
+        private List<TodoItem> listTodoItem;
         public TampilTodoItem()
         {
             InitializeComponent();
@@ -23,7 +24,8 @@ namespace XamarinServicesIKIN
 
         protected async override void OnAppearing()
         {
-            lstTodo.ItemsSource = await todoServices.GetAllTodoItem();
+            listTodoItem = await todoServices.GetAllTodoItem();
+            lstTodo.ItemsSource = listTodoItem;
         }
 
         private async void btnTambah_Clicked(object sender, EventArgs e)
@@ -31,6 +33,18 @@ namespace XamarinServicesIKIN
             TambahTodoItem tambahTodo = new TambahTodoItem();
             tambahTodo.BindingContext = new TodoItem() { ID = Guid.NewGuid().ToString().Substring(0, 8) };
             await Navigation.PushAsync(tambahTodo);
+        }
+
+        private void ButtonEventClicked(object sender, EventArgs e)
+        {
+            var item = (Button)sender;
+            if (item.Text == "Edit")
+            {
+                TodoItem todoItem = (from itm in listTodoItem
+                                     where itm.ID == item.CommandParameter.ToString()
+                                     select itm).FirstOrDefault();
+
+            }
         }
     }
 }
