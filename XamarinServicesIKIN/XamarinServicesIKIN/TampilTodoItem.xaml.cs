@@ -37,7 +37,7 @@ namespace XamarinServicesIKIN
             await Navigation.PushAsync(tambahTodo);
         }
 
-        private void ButtonEventClicked(object sender, EventArgs e)
+        private async void ButtonEventClicked(object sender, EventArgs e)
         {
             var item = (Button)sender;
             if (item.Text == "Edit")
@@ -45,7 +45,14 @@ namespace XamarinServicesIKIN
                 TodoItem todoItem = (from itm in todoItemList.ListTodoItem
                                      where itm.ID == item.CommandParameter.ToString()
                                      select itm).FirstOrDefault();
-
+                try
+                {
+                    await todoServices.EditTodoItem(todoItem);
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Error", "Error : " + ex.Message, "OK");
+                }
             }
         }
     }

@@ -52,8 +52,8 @@ namespace XamarinServicesIKIN.Services
         public async Task EditTodoItem(TodoItem todoItem)
         {
             var strUri = new Uri(Path.Combine(Koneksi.RestUrl, "api/TodoItem/"+todoItem.ID));
-            var newItem = JsonConvert.SerializeObject(todoItem);
-            var content = new StringContent(newItem, Encoding.UTF8, "application/json");
+            var editItem = JsonConvert.SerializeObject(todoItem);
+            var content = new StringContent(editItem, Encoding.UTF8, "application/json");
             HttpResponseMessage response = null;
             response = await _client.PutAsync(strUri, content);
             if (!response.IsSuccessStatusCode)
