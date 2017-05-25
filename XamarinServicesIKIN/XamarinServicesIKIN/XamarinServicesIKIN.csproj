@@ -48,7 +48,6 @@
     <Compile Include="TampilTodoItem.xaml.cs">
       <DependentUpon>TampilTodoItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\TodoItemViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">

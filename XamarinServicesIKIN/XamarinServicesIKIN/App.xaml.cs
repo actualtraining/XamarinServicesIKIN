@@ -13,7 +13,7 @@ namespace XamarinServicesIKIN
         {
             InitializeComponent();
 
-            MainPage = new XamarinServicesIKIN.MainPage();
+            MainPage = new NavigationPage(new TampilTodoItem());
         }
 
         protected override void OnStart()
