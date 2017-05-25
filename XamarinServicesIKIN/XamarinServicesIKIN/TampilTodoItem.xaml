@@ -11,9 +11,9 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Label Text="{Binding Name}" FontSize="Medium" />
+                            <Entry Text="{Binding Name}" FontSize="Medium" />
                             <Label Text="{Binding ID}" FontAttributes="Bold" />
-                            <Label Text="{Binding Notes}"/>
+                            <Entry Text="{Binding Notes}"/>
                             <Switch IsToggled="{Binding Done}"/>
                             <StackLayout Orientation="Horizontal">
                                 <Button CommandParameter="{Binding ID}" Clicked="ButtonEventClicked" Text="Edit" />
