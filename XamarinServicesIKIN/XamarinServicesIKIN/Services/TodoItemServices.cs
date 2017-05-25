@@ -34,5 +34,19 @@ namespace XamarinServicesIKIN.Services
                 throw new Exception("Error: " + response.StatusCode.ToString());
             }
         }
+
+        public async Task TambahTodoItem(TodoItem todoItem)
+        {
+            var strUri = new Uri(Path.Combine(Koneksi.RestUrl, "api/TodoItem"));
+            var newItem = JsonConvert.SerializeObject(todoItem);
+            var content = new StringContent(newItem, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = null;
+            response = await _client.PostAsync(strUri, content);
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception("Error : Data gagal ditambahkan, status:"
+                    + response.StatusCode);
+            }
+        }
     }
 }
