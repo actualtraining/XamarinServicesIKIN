@@ -45,6 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Koneksi.cs" />
     <Compile Include="Services\TodoItemServices.cs" />
+    <Compile Include="TambahTodoItem.xaml.cs">
+      <DependentUpon>TambahTodoItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TampilTodoItem.xaml.cs">
       <DependentUpon>TampilTodoItem.xaml</DependentUpon>
     </Compile>
@@ -99,6 +102,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="TampilTodoItem.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TambahTodoItem.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
