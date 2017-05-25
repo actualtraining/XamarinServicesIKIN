@@ -22,7 +22,7 @@ namespace XamarinServicesIKIN.ViewModel
 
         public async Task GetAllTodoItem()
         {
-            listTodoItem = await todoServices.GetAllTodoItem();
+            ListTodoItem = await todoServices.GetAllTodoItem();
         }
 
         public TodoItemViewModel()
