@@ -62,5 +62,17 @@ namespace XamarinServicesIKIN.Services
                     + response.StatusCode);
             }
         }
+
+        public async Task DeleteTodoItem(TodoItem todoItem)
+        {
+            var strUri = new Uri(Path.Combine(Koneksi.RestUrl, "api/TodoItem/" + todoItem.ID));
+            HttpResponseMessage response = null;
+            response = await _client.DeleteAsync(strUri);
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception("Error : Data gagal didelete, status:"
+                    + response.StatusCode);
+            }
+        }
     }
 }

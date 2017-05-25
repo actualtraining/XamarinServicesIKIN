@@ -54,6 +54,25 @@ namespace XamarinServicesIKIN
                     await DisplayAlert("Error", "Error : " + ex.Message, "OK");
                 }
             }
+            else if (item.Text == "Delete")
+            {
+                TodoItem todoItem = (from itm in todoItemList.ListTodoItem
+                                     where itm.ID == item.CommandParameter.ToString()
+                                     select itm).FirstOrDefault();
+                try
+                {
+                    var result = await DisplayAlert("Konfirmasi", "Apakah anda yakin delete data " + todoItem.Name + "?", "Yes", "No");
+                    if (result)
+                    {
+                        await todoServices.DeleteTodoItem(todoItem);
+                        todoItemList.ListTodoItem.Remove(todoItem);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Error", "Error : " + ex.Message, "OK");
+                }
+            }
         }
     }
 }
