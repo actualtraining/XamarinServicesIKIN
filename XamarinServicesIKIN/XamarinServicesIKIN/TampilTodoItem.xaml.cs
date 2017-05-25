@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinServicesIKIN.Services;
 using XamarinServicesIKIN.Model;
+using System.Collections.ObjectModel;
 
 namespace XamarinServicesIKIN
 {
@@ -15,7 +16,7 @@ namespace XamarinServicesIKIN
     public partial class TampilTodoItem : ContentPage
     {
         private TodoItemServices todoServices;
-        private List<TodoItem> listTodoItem;
+        private TodoItemList todoItemList;
         public TampilTodoItem()
         {
             InitializeComponent();
@@ -24,8 +25,9 @@ namespace XamarinServicesIKIN
 
         protected async override void OnAppearing()
         {
-            listTodoItem = await todoServices.GetAllTodoItem();
-            lstTodo.ItemsSource = listTodoItem;
+            todoItemList = new TodoItemList();
+            todoItemList.ListTodoItem = new ObservableCollection<TodoItem>(await todoServices.GetAllTodoItem());
+            lstTodo.ItemsSource = todoItemList.ListTodoItem;
         }
 
         private async void btnTambah_Clicked(object sender, EventArgs e)
@@ -40,7 +42,7 @@ namespace XamarinServicesIKIN
             var item = (Button)sender;
             if (item.Text == "Edit")
             {
-                TodoItem todoItem = (from itm in listTodoItem
+                TodoItem todoItem = (from itm in todoItemList.ListTodoItem
                                      where itm.ID == item.CommandParameter.ToString()
                                      select itm).FirstOrDefault();
 

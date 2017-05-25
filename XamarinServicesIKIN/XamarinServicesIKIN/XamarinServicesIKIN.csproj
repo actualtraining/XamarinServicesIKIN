@@ -42,6 +42,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\TodoItem.cs" />
+    <Compile Include="Model\TodoItemList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Koneksi.cs" />
     <Compile Include="Services\TodoItemServices.cs" />
